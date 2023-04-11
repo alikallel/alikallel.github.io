@@ -1,0 +1,31 @@
+.indigo{
+    background-color: #6610f2;
+ }
+ .text-indigo
+ {
+    color: #6610f2;
+ }
+ .white-img{
+     filter:brightness(0) invert(1);
+ }
+ .navbar-nav>li>a{
+     font-size: 20px;
+ }
+ .rounded-img
+ {
+     border-radius: 50%; 
+     border-color: #6610f2;
+     border: 8px solid #6610f2;
+     box-shadow: 5px 5px 5px  #D3D3D3, 5px 5px 5px  #C0C0C0 ;
+   }
+   #intro{
+       padding: 100px;
+   }
+.cstom-border{
+    border: 10px solid #6610f2;
+}
+.nav-link:hover
+{
+    
+    opacity: 0.9;
+}
