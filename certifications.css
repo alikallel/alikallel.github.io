@@ -1,0 +1,98 @@
+
+.btn-indigo {
+    background-color: #4b0082;
+    border-color: #4b0082;
+}
+
+.achievement-category .row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  /* Column styles */
+  .achievement-category .col-lg-4,
+  .achievement-category .col-md-6 {
+    display: flex;
+  }
+
+.btn-indigo:hover, .btn-outline-indigo:hover {
+    background-color: #3a0066;
+    border-color: #3a0066;
+}
+
+.cert-card {
+    transition: transform 0.3s ease;
+    width: 100%;
+
+}
+
+.cert-card:hover {
+    transform: translateY(-5px);
+}
+
+.cert-content {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.cert-image {
+    width: 120px;
+    object-fit: contain;
+    margin-right: 1rem;
+
+}
+
+.cert-details {
+    flex: 1;
+}
+
+.cert-details .card-title {
+    margin-bottom: 0.25rem;
+    font-size: 1.1rem;
+}
+
+.organization {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 0;
+}
+
+.cert-description {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: #5a5a5a;
+}
+
+
+/* Button styles */
+.see-more-btn {
+    padding: 0.5rem 2rem;
+}
+
+/* Image link styles */
+.cert-image-link {
+    display: block;
+    text-decoration: none;
+}
+
+/* Border styles */
+.border-indigo {
+    border-color: #6610f2;
+}
+.flex-grow-1 {
+    flex-grow: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .cert-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .cert-image {
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+}

@@ -1,0 +1,36 @@
+.navbar {
+    background-color: #4b0082;
+}
+
+.navbar .nav-link {
+    color: #ffffff;
+}
+
+.navbar .nav-link.active {
+    font-weight: bold;
+}
+
+.navbar .btn-outline-light {
+    border-color: #ffffff;
+}
+
+.navbar .btn-outline-light:hover {
+    background-color: #ffffff;
+    color: #4b0082;
+}
+
+/* Logo image inversion */
+.logo-img {
+    filter: invert(1);
+}
+
+/* Mobile dark mode button positioning */
+@media (max-width: 991.98px) {
+    .navbar .navbar-toggler {
+        order: 2;
+    }
+    
+    #darkModeToggle {
+        order: 1;
+    }
+}

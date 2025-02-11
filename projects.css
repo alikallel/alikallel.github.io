@@ -1,0 +1,56 @@
+
+.bg-indigo {
+    background-color: #4b0082;
+}
+
+.btn-indigo {
+    background-color: #4b0082;
+    border-color: #4b0082;
+}
+
+
+.btn-indigo:hover, .btn-outline-indigo:hover {
+    background-color: #3a0066;
+    border-color: #3a0066;
+}
+
+/* Projects Section */
+.hover-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.hidden-projects {
+    transition: opacity 0.3s ease, height 0.3s ease;
+}
+
+.hidden-projects.d-none {
+    display: flex !important;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+.hidden-projects:not(.d-none) {
+    opacity: 1;
+    height: auto;
+}
+
+.bg-indigo {
+    background-color: #4b0082 !important;
+}
+
+.btn-indigo {
+    background-color: #4b0082;
+    border-color: #4b0082;
+    color: white !important;
+}
+
+.btn-indigo:hover {
+    background-color: #3a0066;
+    border-color: #3a0066;
+}

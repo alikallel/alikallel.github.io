@@ -1,0 +1,28 @@
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: #4b0082;
+}
+
+.achievement-card {
+    height: 100%;
+    padding: 1.5rem;
+  }
+  
+  .achievement-card img {
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+  }
+  
+.carousel-control-prev,
+.carousel-control-next {
+  width: 5%;
+  opacity: 0.8;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: var(--indigo);
+  padding: 1.5rem;
+  border-radius: 50%;
+}
