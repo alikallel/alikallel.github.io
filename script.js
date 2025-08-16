@@ -26,6 +26,9 @@ async function loadHTML(elementId, url) {
         const data = await response.text();
         document.getElementById(elementId).innerHTML = data;
         
+        if (elementId === 'projects-placeholder') {
+            initializeProjects();
+        }
         if (elementId === 'certifications-placeholder') {
             initializeCertCards();
         }
@@ -81,6 +84,7 @@ function initializeCertCards() {
         });
     });
 }
+
 function initializeProjects() {
     const seeMoreBtn = document.querySelector('.see-more-projects');
     const hiddenProjects = document.querySelector('.hidden-projects');
@@ -91,25 +95,5 @@ function initializeProjects() {
             hiddenProjects.classList.remove('d-none');
             seeMoreBtn.classList.add('d-none');
         });
-    }
-}
-
-async function loadHTML(elementId, url) {
-    try {
-        const response = await fetch(url);
-        const data = await response.text();
-        document.getElementById(elementId).innerHTML = data;
-        
-        if (elementId === 'projects-placeholder') {
-            initializeProjects();
-        }
-        if (elementId === 'certifications-placeholder') {
-            initializeCertCards();
-        }
-        
-        return true;
-    } catch (error) {
-        console.error('Error loading HTML:', error);
-        return false;
     }
 }

@@ -1,0 +1,73 @@
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+h1 {
+    text-align: center;
+    margin-bottom: 32px;
+}
+.blog-post h2 {
+    color: #2c3e50;
+    margin-top: 0;
+}
+/* Blog List Styles */
+.list-group-item {
+    color: var(--text-light);
+    border: none;
+    border-bottom: 1px solid var(--border-light);
+    transition: background 0.2s, color 0.2s;
+}
+.list-group-item:last-child {
+    border-bottom: none;
+}
+.list-group-item-action:hover, .list-group-item-action:focus {
+    background: grey;
+    color: var(--indigo);
+    text-decoration: none;
+}
+
+
+
+/* Blog Post Styles (ensure dark mode compatibility) */
+.blog-post {
+
+    border-radius: 8px;
+    padding: 32px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    margin-bottom: 32px;
+   
+}
+
+
+.blog-image {
+    display: block;
+    max-width: 100%;
+    margin: 16px auto;
+    border-radius: 4px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+
+pre {
+    background: #f4f4f4;
+    padding: 16px;
+    border-radius: 4px;
+    overflow-x: auto;
+    margin: 16px 0;
+}
+[data-theme="dark"] pre {
+    background: #23263a;
+    color: #e2e8f0;
+}
+
+code {
+    font-family: 'Fira Mono', 'Consolas', monospace;
+    color: #c7254e;
+}
+ul {
+    margin: 16px 0;
+    padding-left: 24px;
+} 

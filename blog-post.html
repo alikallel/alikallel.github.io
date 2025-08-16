@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTF Writeup</title>
+    <link rel="icon" href="images/akwp.png" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+    <link href="style.css" rel="stylesheet">
+    <link href="projects.css" rel="stylesheet">
+    <link href="navbar.css" rel="stylesheet">
+    <link href="blog.css" rel="stylesheet">
+</head>
+<body>
+    <div id="navbar-placeholder"></div>
+    <section class="py-2">
+        <div class="container">
+            <a href="blogs.html" class="btn btn-outline-indigo mb-4"><i class="bi bi-arrow-left"></i> Back to Writeups</a>
+            <article class="blog-post">
+                <h1 class="mb-3">HackTheBox: Easy Machine</h1>
+                <div class="mb-2 text-muted">Posted on May 2024</div>
+                <img src="images/ak.png" alt="HTB Easy" class="blog-image mb-4">
+                <h3>Enumeration</h3>
+                <p>We start by scanning the target with <code>nmap</code>:</p>
+                <pre><code>nmap -sC -sV -oA nmap/initial 10.10.10.10</code></pre>
+                <h3>Exploitation</h3>
+                <p>After finding a vulnerable service, we exploit it using the following script:</p>
+                <pre><code>python3 exploit.py --target 10.10.10.10</code></pre>
+                <h3>Privilege Escalation</h3>
+                <p>We use <code>linpeas.sh</code> to enumerate privilege escalation vectors:</p>
+                <pre><code>./linpeas.sh</code></pre>
+                <h3>Flag</h3>
+                <p>Finally, we capture the user and root flags:</p>
+                <pre><code>cat /home/user/user.txt
+cat /root/root.txt</code></pre>
+            </article>
+        </div>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 
