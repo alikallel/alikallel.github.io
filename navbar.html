@@ -1,4 +1,11 @@
 <link href="navbar.css" rel="stylesheet">
+<script>
+    // Prevent flash of unstyled content by setting theme immediately
+    (function() {
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+    })();
+</script>
 <nav class="navbar navbar-expand-lg fixed-top py-3">
     <div class="container-xl">
         <a href="index.html" class="navbar-brand">
@@ -25,7 +32,7 @@
                     <a class="nav-link text-light" href="index.html#achievements">Achievements</a>
                 </li>
                 <li class="nav-item mx-2">
-                    <a class="nav-link text-light" href="blogs.html">Blog</a>
+                    <a class="nav-link text-light" href="blogs.html">Blogs</a>
                 </li>
                 <li class="nav-item mx-2 ">
                     <button id="darkModeToggle" class="btn btn-outline-light">

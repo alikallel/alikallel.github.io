@@ -3,7 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CTF Writeups - Blog</title>
+    <title>CTF Writeups & Cybersecurity Blog - Ali Kallel</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Explore CTF writeups, cybersecurity tutorials, and penetration testing guides. Learn about HackTheBox, TryHackMe challenges, and ethical hacking techniques.">
+    <meta name="keywords" content="CTF writeups, cybersecurity blog, HackTheBox, TryHackMe, penetration testing, ethical hacking, security tutorials, CTF challenges">
+    <meta name="author" content="Ali Kallel">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="CTF Writeups & Cybersecurity Blog - Ali Kallel">
+    <meta property="og:description" content="Explore CTF writeups, cybersecurity tutorials, and penetration testing guides. Learn about HackTheBox, TryHackMe challenges, and ethical hacking techniques.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://alikallel.github.io/blogs.html">
+    <meta property="og:image" content="https://alikallel.github.io/images/ak.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://alikallel.github.io/blogs.html">
     <link rel="icon" href="images/akwp.png" type="image/png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
@@ -11,26 +27,143 @@
     <link href="projects.css" rel="stylesheet">
     <link href="navbar.css" rel="stylesheet">
     <link href="blog.css" rel="stylesheet">
+    <script>
+        // Prevent flash of unstyled content by setting theme immediately
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
 </head>
 <body>
     <div id="navbar-placeholder"></div>
     <section class="py-5 bg-light">
         <div class="container">
-            <h3 class="text-center mb-5">CTF Writeups</h3>
-            <div class="list-group list-group-flush">
-                <!-- Example Blog List Item -->
-                <a href="blog-post.html?id=htb-easy" class="list-group-item list-group-item-action py-4 px-3 border-bottom">
-                    <div class="d-flex w-100 justify-content-between align-items-center">
-                        <h5 class="mb-1">HackTheBox: Easy Machine</h5>
-                        <small class="text-muted">May 2024</small>
+            <h5 class="text-center mb-4">Blogs</h5>
+            
+            <!-- Search Bar -->
+            <div class="row justify-content-center mb-4">
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-search"></i></span>
+                        <input type="text" class="form-control" id="blogSearch" placeholder="Search blogs by title, content, or category...">
+                        <button class="btn btn-outline-secondary" type="button" id="clearSearch">Clear</button>
                     </div>
-                    <p class="mb-1 text-muted">A walkthrough of the 'Easy' machine on HackTheBox, covering enumeration, exploitation, and privilege escalation.</p>
+                </div>
+            </div>
+
+            <!-- Category Filter -->
+            <div class="row justify-content-center mb-4">
+                <div class="col-md-8">
+                    <div class="d-flex flex-wrap justify-content-center gap-2">
+                        <button class="btn btn-sm category-filter active" data-category="all">All</button>
+                        <button class="btn btn-sm category-filter" data-category="htb">HackTheBox</button>
+                        <button class="btn btn-sm category-filter" data-category="thm">TryHackMe</button>
+                        <button class="btn btn-sm category-filter" data-category="ctf">CTF</button>
+                        <button class="btn btn-sm category-filter" data-category="web">Web Security</button>
+                        <button class="btn btn-sm category-filter" data-category="forensics">Forensics</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="list-group list-group-flush" id="blogList">
+                <!-- Blog List Items -->
+                <a href="blog-post-smartskills-intern.html" class="list-group-item list-group-item-action py-4 px-3 border-bottom blog-item" data-category="htb" data-title="HackTheBox: Easy Machine" data-content="A walkthrough of the Easy machine on HackTheBox, covering enumeration, exploitation, and privilege escalation.">
+                    <div class="d-flex w-100 justify-content-between align-items-center">
+                        <h5 class="mb-1">Internship</h5>
+                        <small class="text-muted">Sep 2024</small>
+                    </div>
+                    <p class="mb-1 text-muted">Smart Skills Internship: Penetration Testing Experience</p>
+                    <span class="badge bg-primary">Penetration Testing</span>
                 </a>
-                <!-- Add more blog list items here -->
+
+            </div> <!-- close #blogList to fix spacing/layout -->
+            
+            <!-- No Results Message -->
+            <div id="noResults" class="text-center mt-4" style="display: none;">
+                <h5 class="text-muted">No blogs found matching your search criteria</h5>
+                <p class="text-muted">Try adjusting your search terms or category filter</p>
             </div>
         </div>
     </section>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
+    <script>
+        // Search and filter functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('blogSearch');
+            const clearButton = document.getElementById('clearSearch');
+            const categoryFilters = document.querySelectorAll('.category-filter');
+            const blogItems = document.querySelectorAll('.blog-item');
+            const noResults = document.getElementById('noResults');
+
+            let currentCategory = 'all';
+            let currentSearch = '';
+
+            function filterBlogs() {
+                let visibleCount = 0;
+
+                blogItems.forEach(item => {
+                    const title = item.getAttribute('data-title').toLowerCase();
+                    const content = item.getAttribute('data-content').toLowerCase();
+                    const category = item.getAttribute('data-category');
+                    
+                    const matchesSearch = currentSearch === '' || 
+                        title.includes(currentSearch.toLowerCase()) || 
+                        content.includes(currentSearch.toLowerCase());
+                    
+                    const matchesCategory = currentCategory === 'all' || 
+                        category.includes(currentCategory);
+
+                    if (matchesSearch && matchesCategory) {
+                        item.style.display = 'block';
+                        visibleCount++;
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+
+                // Show/hide no results message
+                if (visibleCount === 0) {
+                    noResults.style.display = 'block';
+                } else {
+                    noResults.style.display = 'none';
+                }
+            }
+
+            // Search input event
+            searchInput.addEventListener('input', function() {
+                currentSearch = this.value;
+                filterBlogs();
+            });
+
+            // Clear search button
+            clearButton.addEventListener('click', function() {
+                searchInput.value = '';
+                currentSearch = '';
+                filterBlogs();
+            });
+
+            // Category filter events
+            categoryFilters.forEach(filter => {
+                filter.addEventListener('click', function() {
+                    // Remove active class from all filters
+                    categoryFilters.forEach(f => f.classList.remove('active'));
+                    // Add active class to clicked filter
+                    this.classList.add('active');
+                    
+                    currentCategory = this.getAttribute('data-category');
+                    filterBlogs();
+                });
+            });
+
+            // Enter key to clear search
+            searchInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' && this.value === '') {
+                    filterBlogs();
+                }
+            });
+        });
+    </script>
 </body>
-</html> 
+</html>
