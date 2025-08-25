@@ -4,7 +4,3 @@ Allow: /
 # Sitemap location
 Sitemap: https://alikallel.github.io/sitemap.xml
 
-# Disallow certain directories/files if needed
-# Disallow: /private/
-# Disallow: /admin/
-
