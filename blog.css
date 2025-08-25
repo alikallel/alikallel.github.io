@@ -229,7 +229,6 @@ ul {
     color: var(--indigo-light);
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
     .container {
         padding: 10px;
