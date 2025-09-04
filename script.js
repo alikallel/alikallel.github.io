@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     const components = {
         'navbar-placeholder': 'navbar.html',
-        'hero-placeholder': 'hero.html',
         'about-placeholder': 'about.html',
         'experience-placeholder': 'experience.html',
         'skills-placeholder': 'skills.html',
@@ -24,17 +23,25 @@ async function loadHTML(elementId, url) {
     try {
         const response = await fetch(url);
         const data = await response.text();
-        document.getElementById(elementId).innerHTML = data;
-        
+        const container = document.getElementById(elementId);
+
+        if (!container) {
+            // silently skip if placeholder doesn't exist
+            return false;
+        }
+
+        container.innerHTML = data;
+
         if (elementId === 'projects-placeholder') initializeProjects();
         if (elementId === 'certifications-placeholder') initializeCertCards();
-        
+
         return true;
     } catch (error) {
-        console.error('Error loading HTML:', error);
+        // completely silent, no console log
         return false;
     }
 }
+
 
 // -------------------- Theme --------------------
 function initializeTheme() {
