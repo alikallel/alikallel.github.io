@@ -85,14 +85,15 @@
         })();
     </script>
   <!-- Google tag (gtag.js) -->
+  <!-- Place in <head> -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-G7CSHH2GPB"></script>
     <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
-    gtag('config', 'G-G7CSHH2GPB');
+    gtag('config', 'G-G7CSHH2GPB', { 'send_page_view': true });
     </script>
+
 </head>
 <body>
     <div id="navbar-placeholder"></div>
