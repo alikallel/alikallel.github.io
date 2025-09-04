@@ -83,7 +83,6 @@
 
     <link href="projects.css" rel="stylesheet" media="print" onload="this.media='all'">
     <link href="navbar.css" rel="stylesheet">
-    <link href="experience.css" rel="stylesheet" media="print" onload="this.media='all'">
     <link href="skills.css" rel="stylesheet" media="print" onload="this.media='all'">
     <link href="certifications.css" rel="stylesheet" media="print" onload="this.media='all'">
     <link href="achievements.css" rel="stylesheet" media="print" onload="this.media='all'">
@@ -97,13 +96,18 @@
     </script>
   <!-- Google tag (gtag.js) -->
   <!-- Place in <head> -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G7CSHH2GPB"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-G7CSHH2GPB', { 'send_page_view': true });
-    </script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G7CSHH2GPB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-G7CSHH2GPB', { 'send_page_view': false });
+
+  window.addEventListener('load', function() {
+    gtag('event', 'page_view');
+  });
+</script>
+
 
 </head>
 <body>
