@@ -64,16 +64,25 @@
         }
     }
     </script>
-    
+    <link rel="preload" as="image" href="images/mec.jpg">
     <link rel="icon" href="images/akwp.png" type="image/png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+   <!-- Bootstrap Icons -->
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.woff2" as="font" type="font/woff2" crossorigin>
+
+    <!-- Google Fonts -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    </noscript>
+
+    <!-- Main CSS -->
     <link href="style.css" rel="stylesheet">
+
     <link href="projects.css" rel="stylesheet" media="print" onload="this.media='all'">
     <link href="navbar.css" rel="stylesheet">
-    <link href="experience.css" rel="stylesheet">
-    <link href="skills.css" rel="stylesheet">
+    <link href="experience.css" rel="stylesheet" media="print" onload="this.media='all'">
+    <link href="skills.css" rel="stylesheet" media="print" onload="this.media='all'">
     <link href="certifications.css" rel="stylesheet" media="print" onload="this.media='all'">
     <link href="achievements.css" rel="stylesheet" media="print" onload="this.media='all'">
     <link href="about.css" rel="stylesheet">
