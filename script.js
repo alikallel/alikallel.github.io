@@ -32,6 +32,28 @@ async function loadHTML(elementId, url) {
 
         container.innerHTML = data;
 
+        // Initialize any Bootstrap carousels that were injected dynamically.
+        // When content is loaded after Bootstrap ran, carousels need manual initialization.
+        try {
+            const carousels = container.querySelectorAll('.carousel');
+            carousels.forEach(carouselEl => {
+                // Ensure a sensible default interval if not provided in markup
+                if (!carouselEl.getAttribute('data-bs-interval')) {
+                    carouselEl.setAttribute('data-bs-interval', '5000');
+                }
+                const opts = {
+                    interval: parseInt(carouselEl.getAttribute('data-bs-interval')) || 5000,
+                    ride: carouselEl.getAttribute('data-bs-ride') || 'carousel',
+                    pause: carouselEl.getAttribute('data-bs-pause') || 'hover'
+                };
+                const instance = bootstrap.Carousel.getOrCreateInstance(carouselEl, opts);
+                // Start automatic cycling immediately
+                instance.cycle();
+            });
+        } catch (e) {
+            // silent fallback if bootstrap is not available yet
+        }
+
         if (elementId === 'projects-placeholder') initializeProjects();
         if (elementId === 'certifications-placeholder') initializeCertCards();
 
