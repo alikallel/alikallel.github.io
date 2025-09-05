@@ -66,16 +66,19 @@
     </script>
     <link rel="preload" as="image" href="images/mec.jpg" fetchpriority="high">
     <link rel="icon" href="images/akwp.png" type="image/png">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preload" as="font" href="https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiA.woff2" type="font/woff2" crossorigin>
+    
+    <!-- Load non-critical CSS asynchronously -->
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"></noscript>
+    
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" rel="stylesheet"></noscript>
 
-    <!-- Bootstrap Icons CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" rel="stylesheet">
-
-    <!-- Google Fonts preload -->
+    <!-- Google Fonts with font-display swap -->
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    </noscript>
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
+
 
     <!-- Your main CSS -->
     <link href="style.css" rel="stylesheet">
@@ -96,17 +99,35 @@
     </script>
   <!-- Google tag (gtag.js) -->
   <!-- Place in <head> -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G7CSHH2GPB"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-G7CSHH2GPB', { 'send_page_view': false });
+ <script>
+        // Delay Google Analytics until user interacts or page loads completely
+        function loadGoogleAnalytics() {
+            if (window.gtag) return; // Already loaded
+            
+            const script = document.createElement('script');
+            script.async = true;
+            script.src = 'https://www.googletagmanager.com/gtag/js?id=G-G7CSHH2GPB';
+            document.head.appendChild(script);
+            
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            window.gtag = gtag;
+            gtag('js', new Date());
+            gtag('config', 'G-G7CSHH2GPB', { 'send_page_view': false });
+            
+            // Send page view after load
+            gtag('event', 'page_view');
+        }
 
-  window.addEventListener('load', function() {
-    gtag('event', 'page_view');
-  });
-</script>
+        // Load GA on user interaction or after 3 seconds
+        const events = ['mousedown', 'mousemove', 'keypress', 'scroll', 'touchstart'];
+        const loadGA = () => {
+            loadGoogleAnalytics();
+            events.forEach(event => document.removeEventListener(event, loadGA));
+        };
+        events.forEach(event => document.addEventListener(event, loadGA, { once: true, passive: true }));
+        setTimeout(loadGA, 3000);
+    </script>
 
 
 </head>
