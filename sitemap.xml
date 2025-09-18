@@ -2,19 +2,29 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://alikallel.github.io/</loc>
-        <lastmod>2024-12-19</lastmod>
+        <lastmod>2025-09-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>1.0</priority>
     </url>
+
     <url>
         <loc>https://alikallel.github.io/blogs.html</loc>
-        <lastmod>2024-12-19</lastmod>
+        <lastmod>2025-09-18</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
+
+
     <url>
-        <loc>https://alikallel.github.io/blog-post.html</loc>
-        <lastmod>2024-12-19</lastmod>
+        <loc>https://alikallel.github.io/blog-post-smartskills-intern.html</loc>
+        <lastmod>2025-09-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://alikallel.github.io/blog-post-insat.html</loc>
+        <lastmod>2025-09-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
